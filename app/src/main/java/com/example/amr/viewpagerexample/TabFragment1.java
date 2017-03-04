@@ -16,8 +16,8 @@ import com.android.volley.toolbox.StringRequest;
 import com.android.volley.toolbox.Volley;
 
 public class TabFragment1 extends Fragment {
-    public static final String JSON_URL = "http://192.168.1.107/phpinandroid/showStudents.php";
 
+    public static final String JSON_URL = "http://192.168.1.107/phpinandroid/showStudents.php";
     private ListView listView;
 
     @Override
@@ -53,6 +53,7 @@ public class TabFragment1 extends Fragment {
     }
 
     private void showJSON(String json) {
+
         ParseJSON pj = new ParseJSON(json);
         pj.parseJSON();
         CustomList cl = new CustomList(getActivity(), ParseJSON.ids, ParseJSON.names, ParseJSON.emails, ParseJSON.ages);
@@ -62,9 +63,8 @@ public class TabFragment1 extends Fragment {
             public void onItemClick(AdapterView<?> parent, View v, int position, long id) {
 
                 Toast.makeText(getActivity(), ParseJSON.names[position] + " " + ParseJSON.emails[position] + " " + ParseJSON.ages[position], Toast.LENGTH_SHORT).show();
-
+                //  sendRequest();
             }
-
         });
 
         listView.setOnItemLongClickListener(new AdapterView.OnItemLongClickListener() {
